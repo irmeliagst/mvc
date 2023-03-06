@@ -1,7 +1,9 @@
 <?php
+
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,9 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view();
 });
+
 Route::get('/about', function(){
     return view('about',[
         "judul" => "About",
@@ -29,5 +32,18 @@ Route::get('/dashboard', function(){
     return view('dashboard',[
         "judul" => "Dashboard"
     ]);
-});  
+});
 Route::get('/blog', [PostController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+
+// Route::group(['namespace' => 'Backend'], function()
+// {
+//     Route::resource('home', 'HomeController');
+// });
+
+// Route::get('/home', function(){
+//     return view('backend.template');
+// });
+
+
+
